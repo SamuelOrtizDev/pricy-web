@@ -1,11 +1,12 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/common/navbar/NavBar";
+import Script from "next/script";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ['100','200','300','400','500','600','700','800','900']
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
 
 export const metadata = {
@@ -16,10 +17,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906626077">
+      </script>
+
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-16906626077');
+          `,
+        }}
+      />
+
       <body
         className={`${poppins.variable} antialiased`}
       >
-        <Navbar/>
+        <Navbar />
         <main className="pb-32">
           {children}
         </main>
