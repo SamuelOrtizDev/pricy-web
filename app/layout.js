@@ -17,21 +17,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906626077">
-      </script>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906626077">
+        </script>
 
-      <Script
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'AW-16906626077');
           `,
-        }}
-      />
+          }}
+        />
+      </head>
 
       <body
         className={`${poppins.variable} antialiased`}
